@@ -74,3 +74,6 @@ img {
   .archive-piece-5 { grid-column: 6 / 12; margin-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .archive-photo img { transition: none; } }
+
+.archive-piece.motion-featured { grid-column: 1 / 13; margin-top: 0; }
+.archive-piece.motion-featured video { aspect-ratio: 16 / 9; object-fit: contain; background: #000; }

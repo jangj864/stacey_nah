@@ -28,7 +28,7 @@ const categories = ['ALL', 'EDITORIAL', 'NYFW', 'COMMISSIONED', 'MOTION']
 
 function Media({ image, style }: { image: ProjectImage; style?: CSSProperties }) {
   return image.kind === 'video'
-    ? <video src={image.url} controls playsInline preload="metadata" aria-label={image.alt} style={style} />
+    ? <video src={image.url} poster={image.url.endsWith("/14-002.mp4") ? `${import.meta.env.BASE_URL}gallery/motion-featured.png` : undefined} controls playsInline preload="metadata" aria-label={image.alt} style={style} />
     : <img src={image.url} alt={image.alt} loading="lazy" decoding="async" style={style} />
 }
 
@@ -297,7 +297,7 @@ function Home({ onProjectClick }: { onProjectClick: (id: string) => void }) {
           </button>
           <div className="archive-composition">
             {project.images.filter((_, index) => project.id !== opening?.id || index !== 0).map((image, index) => (
-              <figure key={image.url} className={`archive-piece archive-piece-${index % 6}`}>
+              <figure key={image.url} className={`archive-piece archive-piece-${index % 6}${project.category === 'MOTION' && index === 0 ? ' motion-featured' : ''}`}>
                 {image.kind === 'video'
                   ? <Media image={image} style={{ width: '100%', display: 'block' }} />
                   : <button onClick={() => onProjectClick(project.id)} aria-label={`Open ${image.alt}`} className="archive-photo"><Media image={image} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} /></button>}
@@ -336,6 +336,11 @@ function Project({ project, onBack }: { project: Project; onBack: () => void }) 
 
       {/* Image sequence — alternates full-bleed and contained */}
       {project.images.map((img, i) => {
+        if (img.kind === 'video') {
+          return <div key={img.url} style={{ width: i === 0 ? '100%' : 'min(58%, 900px)', minWidth: i === 0 ? undefined : 'min(100%, 300px)', margin: i === 0 ? '0 0 120px' : i === 1 ? '0 0 100px 5%' : '0 5% 100px auto' }}>
+            <Media image={img} style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '16/9', objectFit: 'contain', backgroundColor: '#000' }} />
+          </div>
+        }
         if (i === 0) {
           return (
             <div key={i} style={{ height: '92vh', overflow: 'hidden', backgroundColor: '#d9d9d9', marginBottom: '2px' }}>
