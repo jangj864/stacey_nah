@@ -1,59 +1,5 @@
 [
   {
-    "id": "collection-11",
-    "title": "NYFW",
-    "location": "NYFW",
-    "category": "NYFW",
-    "year": "",
-    "images": [
-      {
-        "url": "gallery/11-001.jpg",
-        "alt": "NYFW — Copy of 0N7A2543",
-        "kind": "image"
-      },
-      {
-        "url": "gallery/11-002.jpg",
-        "alt": "NYFW — Copy of 0N7A2575",
-        "kind": "image"
-      },
-      {
-        "url": "gallery/11-003.jpg",
-        "alt": "NYFW — Copy of 0N7A2580",
-        "kind": "image"
-      },
-      {
-        "url": "gallery/11-004.jpg",
-        "alt": "NYFW — Copy of IMG_5685",
-        "kind": "image"
-      },
-      {
-        "url": "gallery/11-005.jpg",
-        "alt": "NYFW — Copy of IMG_5686",
-        "kind": "image"
-      },
-      {
-        "url": "gallery/11-006.jpg",
-        "alt": "NYFW — IMG_5744",
-        "kind": "image"
-      },
-      {
-        "url": "gallery/11-007.jpg",
-        "alt": "NYFW — IMG_5746",
-        "kind": "image"
-      },
-      {
-        "url": "gallery/11-008.jpg",
-        "alt": "NYFW — IMG_5747",
-        "kind": "image"
-      },
-      {
-        "url": "gallery/11-009.jpg",
-        "alt": "NYFW — IMG_5755",
-        "kind": "image"
-      }
-    ]
-  },
-  {
     "id": "collection-06",
     "title": "JUL 25 2026",
     "location": "EDITORIAL",
@@ -514,6 +460,60 @@
       {
         "url": "gallery/10-007.jpg",
         "alt": "NOV 26 2025 — IMG_7803",
+        "kind": "image"
+      }
+    ]
+  },
+  {
+    "id": "collection-11",
+    "title": "NYFW",
+    "location": "NYFW",
+    "category": "NYFW",
+    "year": "",
+    "images": [
+      {
+        "url": "gallery/11-001.jpg",
+        "alt": "NYFW — Copy of 0N7A2543",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/11-002.jpg",
+        "alt": "NYFW — Copy of 0N7A2575",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/11-003.jpg",
+        "alt": "NYFW — Copy of 0N7A2580",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/11-004.jpg",
+        "alt": "NYFW — Copy of IMG_5685",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/11-005.jpg",
+        "alt": "NYFW — Copy of IMG_5686",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/11-006.jpg",
+        "alt": "NYFW — IMG_5744",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/11-007.jpg",
+        "alt": "NYFW — IMG_5746",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/11-008.jpg",
+        "alt": "NYFW — IMG_5747",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/11-009.jpg",
+        "alt": "NYFW — IMG_5755",
         "kind": "image"
       }
     ]

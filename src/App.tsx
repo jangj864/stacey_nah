@@ -24,7 +24,7 @@ const projects: Project[] = gallery.map(project => ({
   ...project,
   images: project.images.map(image => ({ ...image, url: `${import.meta.env.BASE_URL}${image.url}` })),
 }))
-const categories = ['ALL', 'NYFW', 'EDITORIAL', 'COMMISSIONED', 'MOTION']
+const categories = ['ALL', 'EDITORIAL', 'NYFW', 'COMMISSIONED', 'MOTION']
 
 function Media({ image, style }: { image: ProjectImage; style?: CSSProperties }) {
   return image.kind === 'video'
@@ -45,7 +45,7 @@ function Nav({ current, onNav }: { current: Page; onNav: (p: Page) => void }) {
     { label: 'INDEX', page: 'index' },
     { label: 'ABOUT', page: 'about' },
     { label: 'CONTACT', page: 'contact' },
-    { label: 'INSTAGRAM', page: 'ig', external: 'https://www.instagram.com' },
+    { label: 'INSTAGRAM', page: 'ig', external: 'https://www.instagram.com/staceynah' },
   ]
 
   return (
@@ -233,163 +233,35 @@ function ProjectsIndex({ onSelect }: { onSelect: (id: string) => void }) {
 // ─── About page ───────────────────────────────────────────────────────────────
 
 function About({ onBack }: { onBack: () => void }) {
+  const paragraphs = [
+    'Stacey Nah is a New York-based fashion photographer and multidisciplinary artist.',
+    'Her work explores the intersection of fashion, intimacy, and identity through a distinctly cinematic lens. With an emphasis on raw emotion and unconventional beauty, she creates imagery that blurs the boundaries between editorial photography and personal storytelling.',
+    'Her practice extends into creative direction, moving image, and visual experimentation.',
+  ]
   return (
     <main style={{ paddingTop: '64px', minHeight: '100vh' }}>
-      <div style={{ padding: '80px 40px 0', maxWidth: '560px' }}>
-        <p style={{ fontSize: '7px', letterSpacing: '0.2em', fontWeight: 300, color: 'rgba(0,0,0,0.35)', marginBottom: '56px', cursor: 'crosshair' }} onClick={onBack}>
-          ← INDEX
-        </p>
-        <p style={{ fontSize: '8px', letterSpacing: '0.22em', fontWeight: 300, marginBottom: '4px' }}>STACEY NAH</p>
-        <p style={{ fontSize: '7px', letterSpacing: '0.14em', fontWeight: 300, color: 'rgba(0,0,0,0.38)', marginBottom: '56px' }}>
-          PHOTOGRAPHER · CREATIVE DIRECTOR
-        </p>
-
-        <p style={{ fontSize: '11px', lineHeight: 1.85, fontWeight: 300, color: 'rgba(0,0,0,0.78)', marginBottom: '40px', letterSpacing: '0.01em' }}>
-          Stacey Nah is a photographer and creative director working across fashion, portraiture and editorial. Her practice is rooted in stillness — images that hold tension without resolving it.
-        </p>
-        <p style={{ fontSize: '11px', lineHeight: 1.85, fontWeight: 300, color: 'rgba(0,0,0,0.78)', marginBottom: '72px', letterSpacing: '0.01em' }}>
-          Clients include independent fashion houses, cultural institutions and editorial publications across New York, Seoul and Paris. She is represented by Archive Studio, New York.
-        </p>
-
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-          {[
-            ['BASED', 'New York, NY'],
-            ['REPRESENTED', 'Archive Studio'],
-            ['INQUIRIES', 'studio@staceynah.com'],
-            ['PRESS', 'press@staceynah.com'],
-          ].map(([k, v]) => (
-            <div key={k} style={{ padding: '20px 0', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
-              <p style={{ fontSize: '7px', letterSpacing: '0.18em', fontWeight: 300, color: 'rgba(0,0,0,0.35)', marginBottom: '6px' }}>{k}</p>
-              <p style={{ fontSize: '9px', letterSpacing: '0.06em', fontWeight: 300 }}>{v}</p>
-            </div>
-          ))}
-        </div>
+      <div style={{ padding: '80px clamp(24px, 4vw, 40px) 0', maxWidth: '600px' }}>
+        <button onClick={onBack} style={{ fontSize: '7px', letterSpacing: '0.2em', color: '#888', marginBottom: '56px', cursor: 'pointer' }}>← INDEX</button>
+        <p style={{ fontSize: '8px', letterSpacing: '0.22em', fontWeight: 300, marginBottom: '48px' }}>STACEY NAH</p>
+        {paragraphs.map(text => <p key={text} style={{ fontSize: '12px', lineHeight: 1.9, fontWeight: 300, color: 'rgba(0,0,0,0.78)', marginBottom: '28px', letterSpacing: '0.01em' }}>{text}</p>)}
       </div>
-
-      <footer style={{ marginTop: '140px', padding: '24px 40px', borderTop: '1px solid rgba(0,0,0,0.08)', display: 'flex', justifyContent: 'space-between' }}>
-        <span style={{ fontSize: '8px', letterSpacing: '0.2em', fontWeight: 300 }}>STACEY NAH</span>
-        <span style={{ fontSize: '7px', letterSpacing: '0.14em', fontWeight: 300, color: 'rgba(0,0,0,0.3)' }}>© 2026</span>
-      </footer>
+      <footer style={{ marginTop: '140px', padding: '24px 40px', borderTop: '1px solid #eee', fontSize: '8px', letterSpacing: '0.2em' }}>STACEY NAH © 2026</footer>
     </main>
   )
 }
 
-// ─── Contact page ─────────────────────────────────────────────────────────────
-
 function Contact({ onBack }: { onBack: () => void }) {
-  const [sent, setSent] = useState(false)
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-
-  const field: React.CSSProperties = {
-    width: '100%',
-    border: 'none',
-    borderBottom: '1px solid rgba(0,0,0,0.15)',
-    outline: 'none',
-    fontSize: '11px',
-    fontWeight: 300,
-    letterSpacing: '0.03em',
-    padding: '10px 0 10px',
-    backgroundColor: 'transparent',
-    fontFamily: 'inherit',
-    color: '#000',
-    resize: 'none' as const,
-  }
-
-  const label: React.CSSProperties = {
-    fontSize: '7px',
-    letterSpacing: '0.2em',
-    fontWeight: 300,
-    color: 'rgba(0,0,0,0.38)',
-    display: 'block',
-    marginBottom: '2px',
-    marginTop: '36px',
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSent(true)
-  }
-
   return (
     <main style={{ paddingTop: '64px', minHeight: '100vh' }}>
-      <div style={{ padding: '80px 40px 0', maxWidth: '480px' }}>
-        <p style={{ fontSize: '7px', letterSpacing: '0.2em', fontWeight: 300, color: 'rgba(0,0,0,0.35)', marginBottom: '56px', cursor: 'crosshair' }} onClick={onBack}>
-          ← INDEX
-        </p>
+      <div style={{ padding: '80px clamp(24px, 4vw, 40px) 0', maxWidth: '560px' }}>
+        <button onClick={onBack} style={{ fontSize: '7px', letterSpacing: '0.2em', color: '#888', marginBottom: '56px', cursor: 'pointer' }}>← INDEX</button>
         <p style={{ fontSize: '8px', letterSpacing: '0.22em', fontWeight: 300, marginBottom: '48px' }}>CONTACT</p>
-
-        {sent ? (
-          <div>
-            <p style={{ fontSize: '11px', lineHeight: 1.8, fontWeight: 300, color: 'rgba(0,0,0,0.6)' }}>
-              Message received.<br />We will be in touch.
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit}>
-            <label style={label}>NAME</label>
-            <input
-              style={field}
-              value={form.name}
-              onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-              required
-            />
-            <label style={label}>EMAIL</label>
-            <input
-              type="email"
-              style={field}
-              value={form.email}
-              onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-              required
-            />
-            <label style={label}>MESSAGE</label>
-            <textarea
-              rows={5}
-              style={field}
-              value={form.message}
-              onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-              required
-            />
-            <div style={{ marginTop: '40px' }}>
-              <button
-                type="submit"
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  padding: 0,
-                  fontSize: '8px',
-                  letterSpacing: '0.22em',
-                  fontWeight: 300,
-                  cursor: 'crosshair',
-                  fontFamily: 'inherit',
-                  color: '#000',
-                  borderBottom: '1px solid rgba(0,0,0,0.25)',
-                  paddingBottom: '2px',
-                }}
-              >
-                SEND
-              </button>
-            </div>
-          </form>
-        )}
-
-        <div style={{ marginTop: '72px', paddingTop: '28px', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-          {[
-            ['GENERAL', 'studio@staceynah.com'],
-            ['PRESS', 'press@staceynah.com'],
-            ['REPRESENTATION', 'Archive Studio, New York'],
-          ].map(([k, v]) => (
-            <div key={k} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '14px 0', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
-              <span style={{ fontSize: '7px', letterSpacing: '0.18em', fontWeight: 300, color: 'rgba(0,0,0,0.35)' }}>{k}</span>
-              <span style={{ fontSize: '9px', letterSpacing: '0.05em', fontWeight: 300 }}>{v}</span>
-            </div>
-          ))}
+        <div style={{ fontSize: '12px', lineHeight: 2, fontWeight: 300 }}>
+          <a href="mailto:stacey100407@gmail.com" style={{ display: 'block', width: 'fit-content', borderBottom: '1px solid #ddd', marginBottom: '32px' }}>stacey100407@gmail.com</a>
+          <a href="https://www.instagram.com/staceynah" target="_blank" rel="noreferrer" style={{ display: 'block', width: 'fit-content', borderBottom: '1px solid #ddd' }}>Instagram DM · @staceynah ↗</a>
         </div>
       </div>
-
-      <footer style={{ marginTop: '140px', padding: '24px 40px', borderTop: '1px solid rgba(0,0,0,0.08)', display: 'flex', justifyContent: 'space-between' }}>
-        <span style={{ fontSize: '8px', letterSpacing: '0.2em', fontWeight: 300 }}>STACEY NAH</span>
-        <span style={{ fontSize: '7px', letterSpacing: '0.14em', fontWeight: 300, color: 'rgba(0,0,0,0.3)' }}>© 2026</span>
-      </footer>
+      <footer style={{ marginTop: '140px', padding: '24px 40px', borderTop: '1px solid #eee', fontSize: '8px', letterSpacing: '0.2em' }}>STACEY NAH © 2026</footer>
     </main>
   )
 }
@@ -401,7 +273,8 @@ function Contact({ onBack }: { onBack: () => void }) {
 function Home({ onProjectClick }: { onProjectClick: (id: string) => void }) {
   const [category, setCategory] = useState('ALL')
   const visible = projects.filter(project => category === 'ALL' || project.category === category)
-  const opening = visible.find(project => project.images[0].kind === 'image')
+  const cover = projects.find(project => project.images.some(image => image.url.endsWith('/01-001.jpg')))!
+  const opening = category === 'ALL' || category === 'EDITORIAL' ? cover : visible.find(project => project.images[0].kind === 'image')
   return (
     <main style={{ paddingTop: '64px' }}>
       {opening && <div className="archive-opening">
