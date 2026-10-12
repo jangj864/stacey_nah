@@ -24,7 +24,7 @@ const projects: Project[] = gallery.map(project => ({
   ...project,
   images: project.images.map(image => ({ ...image, url: `${import.meta.env.BASE_URL}${image.url}` })),
 }))
-const categories = ['ALL', 'EDITORIAL', 'BRAND COLLABORATIONS', 'RUNWAY', 'MOTION']
+const categories = ['ALL', 'NYFW', 'EDITORIAL', 'COMMISSIONED', 'MOTION']
 
 function Media({ image, style }: { image: ProjectImage; style?: CSSProperties }) {
   return image.kind === 'video'
@@ -115,6 +115,8 @@ function Nav({ current, onNav }: { current: Page; onNav: (p: Page) => void }) {
 // ─── Projects Index page ──────────────────────────────────────────────────────
 
 function ProjectsIndex({ onSelect }: { onSelect: (id: string) => void }) {
+  const [category, setCategory] = useState('ALL')
+  const visible = projects.filter(project => category === 'ALL' || project.category === category)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const hovered = hoveredId ? projects.find((p) => p.id === hoveredId) ?? null : null
 
@@ -122,12 +124,15 @@ function ProjectsIndex({ onSelect }: { onSelect: (id: string) => void }) {
     <main style={{ paddingTop: '64px', minHeight: '100vh' }}>
       <div style={{ padding: '64px 40px 0' }}>
         <p style={{ fontSize: '7px', letterSpacing: '0.18em', fontWeight: 300, color: 'rgba(0,0,0,0.35)', marginBottom: '56px' }}>
-          ALL PROJECTS — {projects.length}
+          {category} — {visible.length} COLLECTIONS
         </p>
 
+        <div className="flex flex-wrap gap-x-7 gap-y-4" aria-label="Filter collections" style={{ marginBottom: '36px' }}>
+          {categories.map(item => <button key={item} onClick={() => { setCategory(item); setHoveredId(null) }} aria-pressed={category === item} style={{ fontSize: '9px', letterSpacing: '0.14em', paddingBottom: '6px', cursor: 'pointer', color: category === item ? '#000' : '#888', borderBottom: category === item ? '1px solid #000' : '1px solid transparent' }}>{item}</button>)}
+        </div>
         {/* List */}
         <div style={{ position: 'relative' }}>
-          {projects.map((p, i) => (
+          {visible.map((p, i) => (
             <div
               key={p.id}
               onClick={() => onSelect(p.id)}
@@ -140,7 +145,7 @@ function ProjectsIndex({ onSelect }: { onSelect: (id: string) => void }) {
                 padding: '18px 0',
                 borderTop: '1px solid rgba(0,0,0,0.08)',
                 cursor: 'crosshair',
-                borderBottom: i === projects.length - 1 ? '1px solid rgba(0,0,0,0.08)' : 'none',
+                borderBottom: i === visible.length - 1 ? '1px solid rgba(0,0,0,0.08)' : 'none',
               }}
             >
               {/* Left: number + title */}
