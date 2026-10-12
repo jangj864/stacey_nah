@@ -40,3 +40,37 @@ img {
 .page-enter {
   animation: pageIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+.archive-opening-image { display: block; width: 100%; height: 90svh; padding: 0; cursor: crosshair; overflow: hidden; }
+.archive-opening-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+.archive-opening-caption { margin: 12px 4% 0; text-align: right; font-size: 8px; letter-spacing: .18em; font-weight: 300; }
+.archive-filters { padding: clamp(80px, 13vw, 180px) 5% clamp(64px, 9vw, 130px); }
+.archive-eyebrow { font-size: 8px; letter-spacing: .22em; color: #888; margin-bottom: 28px; }
+.archive-collection { margin-bottom: clamp(100px, 16vw, 240px); }
+.archive-collection-label { display: block; margin: 0 5% 40px; text-align: left; cursor: pointer; font-size: 9px; letter-spacing: .2em; font-weight: 300; }
+.archive-collection-meta { font-size: 7px; letter-spacing: .12em; color: #888; margin-top: 7px; }
+.archive-composition { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 4px; align-items: start; }
+.archive-piece { margin-bottom: clamp(90px, 13vw, 200px); min-width: 0; }
+.archive-photo { display: block; width: 100%; aspect-ratio: 3/4; overflow: hidden; cursor: crosshair; }
+.archive-photo img { transition: opacity .35s ease, transform .7s ease; }
+.archive-photo:hover img { opacity: .88; transform: scale(1.018); }
+.archive-piece figcaption { padding: 9px 4px 0; font-size: 7px; letter-spacing: .18em; color: #777; opacity: 0; transition: opacity .25s; }
+.archive-piece:hover figcaption, .archive-piece:focus-within figcaption { opacity: 1; }
+.archive-piece-0 { grid-column: 1 / 9; }
+.archive-piece-1 { grid-column: 10 / 13; margin-top: 28vw; }
+.archive-piece-2 { grid-column: 3 / 6; margin-top: 2vw; margin-bottom: 17vw; }
+.archive-piece-3 { grid-column: 1 / 13; }
+.archive-piece-3 .archive-photo { aspect-ratio: auto; height: 66svh; }
+.archive-piece-4 { grid-column: 2 / 7; }
+.archive-piece-5 { grid-column: 9 / 13; margin-top: 20vw; }
+.archive-photo:focus-visible, .archive-opening-image:focus-visible { outline: 2px solid #111; outline-offset: -2px; }
+@media (max-width: 640px) {
+  .archive-opening-image { height: 78svh; }
+  .archive-piece-0 { grid-column: 1 / 11; }
+  .archive-piece-1 { grid-column: 6 / 13; margin-top: 0; }
+  .archive-piece-2 { grid-column: 2 / 7; margin-bottom: 100px; }
+  .archive-piece-3 .archive-photo { height: 48svh; }
+  .archive-piece-4 { grid-column: 1 / 10; }
+  .archive-piece-5 { grid-column: 6 / 12; margin-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .archive-photo img { transition: none; } }

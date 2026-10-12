@@ -396,24 +396,36 @@ function Contact({ onBack }: { onBack: () => void }) {
 function Home({ onProjectClick }: { onProjectClick: (id: string) => void }) {
   const [category, setCategory] = useState('ALL')
   const visible = projects.filter(project => category === 'ALL' || project.category === category)
+  const opening = visible.find(project => project.images[0].kind === 'image')
   return (
     <main style={{ paddingTop: '64px' }}>
-      <div style={{ padding: '48px 5% 28px' }}>
-        <p style={{ fontSize: '9px', letterSpacing: '0.22em', marginBottom: '28px' }}>SELECTED WORK — {projects.reduce((total, project) => total + project.images.length, 0)} IMAGES & FILMS</p>
+      {opening && <div className="archive-opening">
+        <button onClick={() => onProjectClick(opening.id)} aria-label={`Open ${opening.title}`} className="archive-opening-image">
+          <img src={opening.images[0].url} alt={opening.images[0].alt} fetchPriority="high" />
+        </button>
+        <p className="archive-opening-caption">{opening.title} · {opening.category}</p>
+      </div>}
+      <div className="archive-filters">
+        <p className="archive-eyebrow">SELECTED WORK</p>
         <div className="flex flex-wrap gap-x-7 gap-y-4" aria-label="Filter collections">
           {categories.map(item => <button key={item} onClick={() => setCategory(item)} aria-pressed={category === item} style={{ fontSize: '9px', letterSpacing: '0.14em', paddingBottom: '6px', cursor: 'pointer', color: category === item ? '#000' : '#888', borderBottom: category === item ? '1px solid #000' : '1px solid transparent' }}>{item}</button>)}
         </div>
       </div>
       {visible.map(project => (
-        <section key={project.id} style={{ padding: '32px 5% 64px' }}>
-          <button onClick={() => onProjectClick(project.id)} style={{ textAlign: 'left', cursor: 'pointer', marginBottom: '24px' }}>
-            <p style={{ fontSize: '11px', letterSpacing: '0.2em' }}>{project.title} ↗</p>
-            <p style={{ fontSize: '8px', letterSpacing: '0.12em', color: '#777', marginTop: '8px' }}>{project.category} · {project.images.length} {project.category === 'MOTION' ? 'FILMS' : 'IMAGES'}</p>
+        <section key={project.id} className="archive-collection">
+          <button onClick={() => onProjectClick(project.id)} className="archive-collection-label">
+            <p>{project.title} ↗</p>
+            <p className="archive-collection-meta">{project.category} · {project.images.length} {project.category === 'MOTION' ? 'FILMS' : 'IMAGES'}</p>
           </button>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-8">
-            {project.images.map((image, index) => image.kind === 'video'
-              ? <Media key={image.url} image={image} style={{ width: '100%', aspectRatio: '3/4', objectFit: 'contain', background: '#f5f5f5' }} />
-              : <button key={image.url} onClick={() => onProjectClick(project.id)} aria-label={`Open ${project.title}, image ${index + 1}`} style={{ cursor: 'crosshair' }}><Media image={image} style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', display: 'block' }} /></button>)}
+          <div className="archive-composition">
+            {project.images.filter((_, index) => project.id !== opening?.id || index !== 0).map((image, index) => (
+              <figure key={image.url} className={`archive-piece archive-piece-${index % 6}`}>
+                {image.kind === 'video'
+                  ? <Media image={image} style={{ width: '100%', display: 'block' }} />
+                  : <button onClick={() => onProjectClick(project.id)} aria-label={`Open ${image.alt}`} className="archive-photo"><Media image={image} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} /></button>}
+                <figcaption>{project.title}</figcaption>
+              </figure>
+            ))}
           </div>
         </section>
       ))}
