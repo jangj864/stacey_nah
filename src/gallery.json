@@ -1,5 +1,109 @@
 [
   {
+    "id": "collection-zoe-nova",
+    "title": "ZOE NOVA",
+    "location": "EDITORIAL",
+    "category": "EDITORIAL",
+    "year": "2026",
+    "images": [
+      {
+        "url": "gallery/zoe-nova-img_7162.jpg",
+        "alt": "ZOE NOVA — IMG_7162",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7163.jpg",
+        "alt": "ZOE NOVA — IMG_7163",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7165.jpg",
+        "alt": "ZOE NOVA — IMG_7165",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7167.jpg",
+        "alt": "ZOE NOVA — IMG_7167",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7168.jpg",
+        "alt": "ZOE NOVA — IMG_7168",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7171.jpg",
+        "alt": "ZOE NOVA — IMG_7171",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7172.jpg",
+        "alt": "ZOE NOVA — IMG_7172",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7174.jpg",
+        "alt": "ZOE NOVA — IMG_7174",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7175.jpg",
+        "alt": "ZOE NOVA — IMG_7175",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7176.jpg",
+        "alt": "ZOE NOVA — IMG_7176",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7177.jpg",
+        "alt": "ZOE NOVA — IMG_7177",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7214.jpg",
+        "alt": "ZOE NOVA — IMG_7214",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7216.jpg",
+        "alt": "ZOE NOVA — IMG_7216",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7217.jpg",
+        "alt": "ZOE NOVA — IMG_7217",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7218.jpg",
+        "alt": "ZOE NOVA — IMG_7218",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7219.jpg",
+        "alt": "ZOE NOVA — IMG_7219",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7220.jpg",
+        "alt": "ZOE NOVA — IMG_7220",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7221.jpg",
+        "alt": "ZOE NOVA — IMG_7221",
+        "kind": "image"
+      },
+      {
+        "url": "gallery/zoe-nova-img_7230.jpg",
+        "alt": "ZOE NOVA — IMG_7230",
+        "kind": "image"
+      }
+    ]
+  },
+  {
     "id": "collection-06",
     "title": "JUL 25 2026",
     "location": "EDITORIAL",
