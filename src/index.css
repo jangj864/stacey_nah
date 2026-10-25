@@ -77,3 +77,9 @@ img {
 
 .archive-piece.motion-featured { grid-column: 1 / 13; margin-top: 0; }
 .archive-piece.motion-featured video { aspect-ratio: 16 / 9; object-fit: contain; background: #000; }
+
+.site-nav > span, .site-nav-links > * { white-space: nowrap; }
+@media (max-width: 480px) {
+  .site-nav { flex-direction: column; align-items: flex-start !important; gap: 9px; padding: 12px 16px !important; }
+  .site-nav-links { width: 100%; justify-content: space-between; }
+}

@@ -49,7 +49,7 @@ function Nav({ current, onNav }: { current: Page; onNav: (p: Page) => void }) {
   ]
 
   return (
-    <nav
+    <nav className="site-nav"
       style={{
         position: 'fixed',
         top: 0,
@@ -65,11 +65,11 @@ function Nav({ current, onNav }: { current: Page; onNav: (p: Page) => void }) {
     >
       <span
         onClick={() => onNav('home')}
-        style={{ fontSize: '9px', letterSpacing: '0.3em', fontWeight: 400, cursor: 'crosshair' }}
+        style={{ fontSize: 'clamp(11px, 1vw, 12px)', letterSpacing: '0.3em', fontWeight: 400, cursor: 'crosshair' }}
       >
         STACEY NAH
       </span>
-      <div style={{ display: 'flex', gap: 'clamp(10px, 2vw, 28px)' }}>
+      <div className="site-nav-links" style={{ display: 'flex', gap: 'clamp(10px, 2vw, 28px)' }}>
         {items.map(({ label, page, external }) =>
           external ? (
             <a
@@ -78,7 +78,7 @@ function Nav({ current, onNav }: { current: Page; onNav: (p: Page) => void }) {
               target="_blank"
               rel="noreferrer"
               style={{
-                fontSize: '8px',
+                fontSize: 'clamp(9px, 0.9vw, 11px)',
                 letterSpacing: '0.2em',
                 fontWeight: 300,
                 cursor: 'crosshair',
@@ -94,7 +94,7 @@ function Nav({ current, onNav }: { current: Page; onNav: (p: Page) => void }) {
               key={label}
               onClick={() => onNav(page)}
               style={{
-                fontSize: '8px',
+                fontSize: 'clamp(9px, 0.9vw, 11px)',
                 letterSpacing: '0.2em',
                 fontWeight: 300,
                 cursor: 'crosshair',
